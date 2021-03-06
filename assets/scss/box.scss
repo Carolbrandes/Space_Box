@@ -1,0 +1,62 @@
+$boxes: "box1",
+"box2",
+"box3";
+
+.box {
+    background-color: $branco;
+    height          : 200px;
+    display         : flex;
+    align-items     : center;
+    @extend %box-shadow01;
+
+    .imagem-wrapper {
+        position: relative;
+    }
+
+    .id {
+        font-size       : 1.5em;
+        color           : $azul01;
+        font-weight     : 700;
+        display         : flex;
+        justify-content : center;
+        align-items     : center;
+        width           : 1.8em;
+        height          : 1.8em;
+        border-radius   : 50%;
+        background-color: $azul02;
+        position        : absolute;
+        right           : 10%;
+    }
+
+    img {
+        display: block;
+        padding: 0 1.5em 0 2em;
+    }
+
+    .nome {
+        color      : $azul01;
+        font-size  : 1.5em;
+        font-weight: 700;
+    }
+
+    .cargo {
+        color    : $cinza03;
+        font-size: 1.25em;
+    }
+
+    &.ativo {
+        background-color: $azul03;
+
+        .nome,
+        .cargo {
+            color: $branco !important;
+        }
+    }
+}
+
+@each $box in $boxes {
+    .#{$box} {
+        grid-area: $box;
+    }
+}
+

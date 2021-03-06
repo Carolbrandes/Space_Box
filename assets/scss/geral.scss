@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap');
+
+* {
+    margin    : 0;
+    padding   : 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $cinza01;
+    overflow-x      : hidden;
+    font-family     : 'Open Sans', sans-serif;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width       : 90%;
+    max-width   : 1160px;
+    margin-left : auto;
+    margin-right: auto;
+}
+
+%box-shadow01 {
+    box-shadow        : 0px 4px 8px 0px rgba(123, 121, 121, 0.84);
+    -webkit-box-shadow: 0px 4px 8px 0px rgba(123, 121, 121, 0.84);
+    -moz-box-shadow   : 0px 4px 8px 0px rgba(123, 121, 121, 0.84);
+}
+
+
+.grid {
+    display              : grid;
+    grid-template-columns: repeat(3, 31.5%);
+    grid-template-rows   : 200px 1fr;
+    grid-gap             : 7% 0;
+    grid-template-areas  :
+        "destaque destaque destaque"
+        "box1 box2 box3"
+    ;
+    padding-top    : 2%;
+    justify-content: space-between;
+}
+
+
+
