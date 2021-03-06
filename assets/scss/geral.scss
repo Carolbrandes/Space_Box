@@ -21,6 +21,14 @@ a {
     max-width   : 1160px;
     margin-left : auto;
     margin-right: auto;
+
+    @media screen and (min-width: $tablet) {
+        max-width: 750px;
+    }
+
+    @media screen and (min-width: $desktop) {
+        max-width: 1160px;
+    }
 }
 
 %box-shadow01 {
@@ -30,18 +38,9 @@ a {
 }
 
 
-.grid {
-    display              : grid;
-    grid-template-columns: repeat(3, 31.5%);
-    grid-template-rows   : 200px 1fr;
-    grid-gap             : 7% 0;
-    grid-template-areas  :
-        "destaque destaque destaque"
-        "box1 box2 box3"
-    ;
-    padding-top    : 2%;
+.flex {
+    display        : flex;
+    flex-wrap      : wrap;
     justify-content: space-between;
+    padding-top    : 2%;
 }
-
-
-

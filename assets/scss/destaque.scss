@@ -1,9 +1,15 @@
 .destaque {
-    grid-area       : destaque;
+    width: 100%;
     background-color: $branco;
     display         : flex;
     align-items     : center;
+    padding: 2em 0;
+    margin-bottom: 3%;
     @extend %box-shadow01;
+
+    @media screen and (min-width: $desktop) {
+       
+    }
 
     img {
         display     : block;

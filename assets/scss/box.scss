@@ -4,11 +4,24 @@ $boxes: "box1",
 
 .box {
     background-color: $branco;
-    height          : 200px;
+    height          : 250px;
     display         : flex;
+    flex-direction: column;
+    justify-content:center;
     align-items     : center;
+    margin-bottom: 2%;
     cursor: pointer;
     @extend %box-shadow01;
+
+    @media screen and(min-width: $tablet){
+        width: 48%;
+    }
+
+    @media screen and(min-width: $desktop){
+        width: 32%;
+        height          : 200px;
+        flex-direction: row;
+    }
 
     .imagem-wrapper {
         position: relative;
@@ -38,11 +51,21 @@ $boxes: "box1",
         color      : $azul01;
         font-size  : 1.5em;
         font-weight: 700;
+        text-align: center;
+
+        @media screen and (min-width: $desktop) {
+            text-align: left;
+        }
     }
 
     .cargo {
         color    : $cinza03;
         font-size: 1.25em;
+        text-align: center;
+
+        @media screen and (min-width: $desktop) {
+            text-align: left;
+        }
     }
 
     .idade{
