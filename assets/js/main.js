@@ -23,16 +23,16 @@ async function renderizarBoxColaboradores() {
         `
     }
 
-    const elementoPai = document.querySelector("#wrapper");
+    const elementoPai = document.querySelector("#colaboradores");
     const dadosColaboradores = await fetchColaboradores();
     
     dadosColaboradores && dadosColaboradores.map(({ id, foto, nome, cargo, idade }, index) => {
         let html;
 
         if (index == 0) {
-            html = boxHtml("box ativo", id, foto, nome, cargo, idade);
+            html = boxHtml("ativo", id, foto, nome, cargo, idade);
         } else{
-            html = boxHtml("box", id, foto, nome, cargo, idade);
+            html = boxHtml("", id, foto, nome, cargo, idade);
         }
 
         elementoPai.insertAdjacentHTML('beforeend', html)
@@ -56,6 +56,14 @@ function renderizarColaboradorClicado(id) {
     document.querySelector("#nome").innerText = box.querySelector(".nome").innerText;
     document.querySelector("#cargo").innerText = box.querySelector(".cargo").innerText;
     document.querySelector("#idade").innerText = box.querySelector(".idade").innerText;
+}
+
+
+if(window.innerWidth < 768){
+    const menu = document.querySelector("#menu");
+    document.querySelector("#icone-menu").addEventListener("click", () => {
+        menu.classList.toggle("ativo");
+    });
 }
 
 

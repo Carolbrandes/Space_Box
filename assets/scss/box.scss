@@ -1,25 +1,49 @@
-$boxes: "box1",
-"box2",
-"box3";
+.colaboradores-wrapper {
+    display        : flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items    : center;
+    height         : 300px;
+
+    overflow-y        : scroll;
+    -ms-overflow-style: none;
+    scrollbar-width   : none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    @media screen and(min-width: $tablet) {
+        height         : 500px;    
+    }
+
+    @media screen and(min-width: $desktop) {
+        height         : 800px;
+    }
+}
 
 .box {
     background-color: $branco;
-    height          : 250px;
+    width           : 48%;
+    height          : 200px;
     display         : flex;
-    flex-direction: column;
-    justify-content:center;
+    flex-direction  : column;
+    justify-content : center;
     align-items     : center;
-    margin-bottom: 2%;
-    cursor: pointer;
+    margin-right    : 2%;
+    margin-bottom   : 5%;
+    cursor          : pointer;
     @extend %box-shadow01;
 
-    @media screen and(min-width: $tablet){
-        width: 48%;
+    @media screen and(min-width: $tablet) {
+        margin-right : 0;
+        margin-bottom: 2%;
+        height          : 250px;
     }
 
-    @media screen and(min-width: $desktop){
-        width: 32%;
-        height          : 200px;
+    @media screen and(min-width: $desktop) {
+        width         : 32%;
+        height        : 200px;
         flex-direction: row;
     }
 
@@ -45,13 +69,14 @@ $boxes: "box1",
     img {
         display: block;
         padding: 0 1.5em 0 2em;
+        width: 100%;
     }
 
     .nome {
         color      : $azul01;
         font-size  : 1.5em;
         font-weight: 700;
-        text-align: center;
+        text-align : center;
 
         @media screen and (min-width: $desktop) {
             text-align: left;
@@ -59,8 +84,8 @@ $boxes: "box1",
     }
 
     .cargo {
-        color    : $cinza03;
-        font-size: 1.25em;
+        color     : $cinza03;
+        font-size : 1.25em;
         text-align: center;
 
         @media screen and (min-width: $desktop) {
@@ -68,7 +93,7 @@ $boxes: "box1",
         }
     }
 
-    .idade{
+    .idade {
         display: none;
     }
 
@@ -81,10 +106,3 @@ $boxes: "box1",
         }
     }
 }
-
-@each $box in $boxes {
-    .#{$box} {
-        grid-area: $box;
-    }
-}
-

@@ -6,9 +6,12 @@ header {
             rgba(40, 116, 123, 1) 60%,
             rgba(20, 63, 75, 1) 80%,
             rgba(9, 36, 50, 1) 100%);
+    width      : 100vw;
     height     : 80px;
     display    : flex;
     align-items: center;
+    position : relative;
+    z-index: 2;
 
     .container {
         display        : flex;
@@ -26,17 +29,82 @@ header {
         }
 
         .menu {
+            display         : none;
+            opacity: 0;
+            position        : absolute;
+            top             : 0;
+            left            : 0;
+            width : 100%;
+            height          : 0;
+            background-color: $branco;
+            padding         : 2em 0;
+            z-index         : -1;
+            @extend %box-shadow01;
+            transition: .4s;
+
+            &.ativo {
+                display: block;
+                animation: mobile .10s forwards;
+                animation-delay: .3s;
+                animation-direction: alternate;
+                animation-timing-function: ease-in-out;
+            }
+
+            @media screen and (min-width: $tablet) {
+                display         : block;
+                position        : relative;
+                top             : 0;
+                width           : auto;
+                height          : auto;
+                background-color: transparent;
+                padding         : 0;
+                box-shadow      : none;
+            }
 
             a {
-                color         : $branco;
+                display       : block;
+                color         : $azul01;
                 text-transform: uppercase;
                 font-size     : 1.3em;
-                padding-right : 3em;
+                padding       : 1em 0;
+                text-align    : center;
+                border-bottom : 1px solid $azul01;
 
                 &:last-child {
-                    padding-right: 0;
+                    border-bottom: none;
+                }
+
+                @media screen and (min-width: $tablet) {
+                    display      : inline-block;
+                    color        : $branco;
+                    padding      : 0 3em 0 0;
+                    border-bottom: none;
+                    text-align   : left;
+
+                    &:last-child {
+                        padding-right: 0;
+                    }
+                }
+
+            }
+
+            &-mobile {
+                display: block;
+                cursor : pointer;
+
+                @media screen and (min-width: $tablet) {
+                    display: none;
                 }
             }
         }
+    }
+}
+
+@keyframes mobile {
+    to {
+        opacity: 1;
+        top: 80px;
+        height: 40vh;
+        z-index: 1;
     }
 }
