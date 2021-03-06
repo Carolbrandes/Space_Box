@@ -1,13 +1,13 @@
-async function renderizarBoxColaboradores(){
+async function renderizarBoxColaboradores() {
 
-    async function fetchColaboradores (){
+    async function fetchColaboradores() {
         const data = await fetch("dados.json");
         const json = await data.json();
         return json;
     }
 
-    function boxHtml(classe, id, img, nome, cargo, idade){
-        return  `
+    function boxHtml(classe, id, img, nome, cargo, idade) {
+        return `
         <div id="box${id}" onclick="renderizarColaboradorClicado('${id}')" class="box ${classe}">
             <div class="imagem-wrapper">
                 <span class="id">${id}</span>
@@ -25,21 +25,24 @@ async function renderizarBoxColaboradores(){
 
     const elementoPai = document.querySelector("#wrapper");
     const dadosColaboradores = await fetchColaboradores();
-    console.log(dadosColaboradores);
-
-    dadosColaboradores && dadosColaboradores.map(({id, foto, nome, cargo, idade}, index) => {
+    
+    dadosColaboradores && dadosColaboradores.map(({ id, foto, nome, cargo, idade }, index) => {
         let html;
 
-        if(index == 0 || index == 3 || index == 6){
+        if (index == 0) {
+            html = boxHtml("box1 ativo", id, foto, nome, cargo, idade);
+        }
+
+        if (index == 3 || index == 6) {
             html = boxHtml("box1", id, foto, nome, cargo, idade);
         }
 
-        if(index == 1 || index == 4 || index == 7){
-            html =  boxHtml("box2", id, foto, nome, cargo, idade);
+        if (index == 1 || index == 4 || index == 7) {
+            html = boxHtml("box2", id, foto, nome, cargo, idade);
         }
 
-        if(index == 2 || index == 5 || index == 8){
-            html =  boxHtml("box3", id, foto, nome, cargo, idade);
+        if (index == 2 || index == 5 || index == 8) {
+            html = boxHtml("box3", id, foto, nome, cargo, idade);
         }
         elementoPai.insertAdjacentHTML('beforeend', html)
     })
@@ -49,15 +52,20 @@ renderizarBoxColaboradores();
 
 
 
-function renderizarColaboradorClicado(id){
-    console.log(id);
+function renderizarColaboradorClicado(id) {
+    function removerClasseAtivo() {
+        document.querySelectorAll(".box").forEach(box => box.classList.remove("ativo"));
+    }
 
-   const box = document.querySelector(`#box${id}`);
-   console.log(box)
+    const box = document.querySelector(`#box${id}`);
+    removerClasseAtivo();
+    box.classList.add("ativo");
 
-   document.querySelector("#foto").src = box.querySelector("img").src;
-   document.querySelector("#nome").innerText = box.querySelector(".nome").innerText;
-   document.querySelector("#cargo").innerText = box.querySelector(".cargo").innerText;
-   document.querySelector("#idade").innerText = box.querySelector(".idade").innerText;
+    document.querySelector("#foto").src = box.querySelector("img").src;
+    document.querySelector("#nome").innerText = box.querySelector(".nome").innerText;
+    document.querySelector("#cargo").innerText = box.querySelector(".cargo").innerText;
+    document.querySelector("#idade").innerText = box.querySelector(".idade").innerText;
 }
+
+
 

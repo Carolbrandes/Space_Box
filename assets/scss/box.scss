@@ -45,6 +45,10 @@ $boxes: "box1",
         font-size: 1.25em;
     }
 
+    .idade{
+        display: none;
+    }
+
     &.ativo {
         background-color: $azul03;
 
