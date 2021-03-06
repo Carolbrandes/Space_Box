@@ -6,9 +6,9 @@ async function renderizarBoxColaboradores(){
         return json;
     }
 
-    function boxHtml(classe, id, img, nome, cargo){
+    function boxHtml(classe, id, img, nome, cargo, idade){
         return  `
-        <div class="box ${classe}">
+        <div id="box${id}" onclick="renderizarColaboradorClicado('${id}')" class="box ${classe}">
             <div class="imagem-wrapper">
                 <span class="id">${id}</span>
                 <img src="./assets/imagens/${img}" alt="${nome}">
@@ -17,6 +17,7 @@ async function renderizarBoxColaboradores(){
             <div>
                 <p class="nome">${nome}</p>
                 <p class="cargo">${cargo}</p>
+                <p class="idade">${idade}</p>
             </div>
         </div>
         `
@@ -46,6 +47,17 @@ async function renderizarBoxColaboradores(){
 
 renderizarBoxColaboradores();
 
-function renderizarColaboradorClicado(){
-    const divDestaque = document.querySelector("#colaboradorDestaque");
+
+
+function renderizarColaboradorClicado(id){
+    console.log(id);
+
+   const box = document.querySelector(`#box${id}`);
+   console.log(box)
+
+   document.querySelector("#foto").src = box.querySelector("img").src;
+   document.querySelector("#nome").innerText = box.querySelector(".nome").innerText;
+   document.querySelector("#cargo").innerText = box.querySelector(".cargo").innerText;
+   document.querySelector("#idade").innerText = box.querySelector(".idade").innerText;
 }
+

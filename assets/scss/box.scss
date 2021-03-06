@@ -7,6 +7,7 @@ $boxes: "box1",
     height          : 200px;
     display         : flex;
     align-items     : center;
+    cursor: pointer;
     @extend %box-shadow01;
 
     .imagem-wrapper {
